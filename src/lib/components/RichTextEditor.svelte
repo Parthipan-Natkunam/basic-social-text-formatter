@@ -1,33 +1,19 @@
 <svelte:options customElement="rich-text-editor" />
 
 <script lang="ts">
-  import Toolbar from './Toolbar.svelte';
-  import EditorContent from './EditorContent.svelte';
-  import type { EditorCommand } from '../types/editor';
-  import { createEventDispatcher } from 'svelte';
+  import Toolbar from "./Toolbar.svelte";
+  import EditorContent from "./EditorContent.svelte";
+  import type { EditorCommand } from "../types/editor";
+  import { createEventDispatcher } from "svelte";
   //import { executeEditorCommand } from '../utils/editor';
 
-  const dispatch = createEventDispatcher();
+  let editorContent = "";
 
-  let editorContent = '';
-  let recipients: string[] = [];
-  let subject = '';
-  let sendCopy = false;
-  let highPriority = false;
 
   function handleCommand(event: CustomEvent<EditorCommand>) {
     const command = event.detail;
+    console.log("Received command:", command);
     // executeEditorCommand(command);
-  }
-
-  function handleSend() {
-    dispatch('send', {
-      content: editorContent,
-      recipients,
-      subject,
-      sendCopy,
-      highPriority
-    });
   }
 </script>
 
