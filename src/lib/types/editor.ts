@@ -5,6 +5,7 @@ export type EditorCommand =
   | "insertOrderedList";
 
 export type MappableCommands = "bold" | "italic";
+export type listCommands = "insertunorderedlist" | "insertorderedlist";
 
 export type Tool = {
   icon: string;
