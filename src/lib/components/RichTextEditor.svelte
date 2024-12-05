@@ -10,8 +10,10 @@
   let editorContentRef: EditorContent;
 
   function handleCommand(event: CustomEvent<EditorCommand>) {
+    if (contentToFormat.trim().length === 0) {
+      return;
+    }
     const command = event.detail.toLocaleLowerCase();
-    console.log("Received command:", command);
     const formattedContent = executeFormatCommand(command, contentToFormat);
     if (formattedContent) {
       editorContentRef.replaceSelectedText(formattedContent);
