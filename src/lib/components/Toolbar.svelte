@@ -1,0 +1,46 @@
+<script lang="ts">
+  import { createEventDispatcher } from "svelte";
+  import type { EditorCommand, Tool } from "../types/editor";
+  import ToolbarButton from "./ToolbarButton.svelte";
+
+  import BoldIcon from "../img/bold.svg?url";
+  import ItalicIcon from "../img/italic.svg?url";
+  import ListIcon from "../img/list.svg?url";
+  import OrderedListIcon from "../img/olist.svg?url";
+
+  const dispatch = createEventDispatcher<{ command: EditorCommand }>();
+
+  const tools: Tool[] = [
+    { command: "bold", icon: BoldIcon, tooltip: "Bold" },
+    { command: "italic", icon: ItalicIcon, tooltip: "Italic" },
+    {
+      command: "insertUnorderedList",
+      icon: ListIcon,
+      tooltip: "Bullet List",
+    },
+    {
+      command: "insertOrderedList",
+      icon: OrderedListIcon,
+      tooltip: "Numbered List",
+    },
+  ];
+
+  function executeCommand(command: EditorCommand) {
+    dispatch("command", command);
+  }
+</script>
+
+<div class="toolbar">
+  {#each tools as tool}
+    <ToolbarButton {tool} on:click={() => executeCommand(tool.command)} />
+  {/each}
+</div>
+
+<style>
+  .toolbar {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+</style>
