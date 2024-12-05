@@ -1,5 +1,6 @@
 <script lang="ts">
   export let selectedContent = "";
+  export let content="";
 
   let textareaElement: HTMLTextAreaElement;
   function handleSelect() {
@@ -15,11 +16,13 @@
     const end = textareaElement.selectionEnd;
     textareaElement.setRangeText(newText, start, end, 'end');
     selectedContent = newText;
+    content = textareaElement.value;
   }
 </script>
 
 <textarea
   class="editor-content"
+  bind:value={content}
   bind:this={textareaElement}
   on:select={handleSelect}
   placeholder="Type Your Content Here..."

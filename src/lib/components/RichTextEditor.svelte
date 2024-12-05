@@ -19,6 +19,27 @@
       editorContentRef.replaceSelectedText(formattedContent);
     }
   }
+
+  function copyToClipboard() {
+    const text = editorContentRef.content;
+    if (!navigator.clipboard) {
+      console.error("Clipboard API not available");
+      return;
+    }
+    if (!text) {
+      console.error("No text to copy");
+      return;
+    }
+
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        console.log("Text copied to clipboard");
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
+  }
 </script>
 
 <div class="editor-container">
@@ -27,9 +48,10 @@
     bind:selectedContent={contentToFormat}
     bind:this={editorContentRef}
   />
-  <button class="editor-copy-btn">Copy to Clipboard</button>
+  <button class="editor-copy-btn" on:click={copyToClipboard}
+    >Copy to Clipboard</button
+  >
 </div>
-
 
 <style>
   .editor-container {
@@ -41,8 +63,8 @@
     margin: 0 auto;
     position: relative;
   }
-  .editor-copy-btn{
-    background: #4CAF50;
+  .editor-copy-btn {
+    background: #4caf50;
     color: white;
     padding: 10px 20px;
     border: none;
