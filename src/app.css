@@ -16,9 +16,21 @@
 body {
   margin: 0;
   display: grid;
-  place-items: center;
-  min-width: 100vw;
-  min-height: 100vh;
+  min-width: calc(100vw - 2rem);
+  min-height: calc(100vh - 2rem);
+  align-content: space-evenly;
+  justify-content: space-around;
+  padding: 1rem;
+}
+header {
+  text-align: center;
+  color:#fff;
+}
+
+#header-hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgb(218, 185, 0), rgba(197, 246, 0, 0.75), rgba(255, 166, 0, 0.683));
 }
 
 #app {
