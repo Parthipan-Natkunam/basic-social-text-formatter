@@ -1,10 +1,27 @@
 <script lang="ts">
-  export let content = "";
+  export let selectedContent = "";
+
+  let textareaElement: HTMLTextAreaElement;
+  function handleSelect() {
+    const selectedText = textareaElement.value.substring(
+      textareaElement.selectionStart,
+      textareaElement.selectionEnd
+    );
+    selectedContent = selectedText;
+  }
+
+  export function replaceSelectedText(newText: string) {
+    const start = textareaElement.selectionStart;
+    const end = textareaElement.selectionEnd;
+    textareaElement.setRangeText(newText, start, end, 'end');
+    selectedContent = newText;
+  }
 </script>
 
 <textarea
   class="editor-content"
-  bind:value={content}
+  bind:this={textareaElement}
+  on:select={handleSelect}
   placeholder="Type Your Content Here..."
 />
 

@@ -4,8 +4,10 @@ export type EditorCommand =
   | "insertUnorderedList"
   | "insertOrderedList";
 
-  export type Tool = {
-    icon: string;
-    command: EditorCommand;
-    tooltip: string;
-  }
+export type MappableCommands = "bold" | "italic";
+
+export type Tool = {
+  icon: string;
+  command: EditorCommand;
+  tooltip: string;
+}
