@@ -25,6 +25,7 @@ body {
 header {
   text-align: center;
   color:#fff;
+  user-select: none;
 }
 
 #header-hr {
