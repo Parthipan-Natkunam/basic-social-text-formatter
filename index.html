@@ -1,21 +1,86 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Social Post Formatter</title>
+
+    <style>
+      :root {
+        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+
+        color-scheme: dark;
+        color: rgb(0, 0, 0);
+        background-color: #242424;
+
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        margin: 0;
+        display: grid;
+        min-width: calc(100vw - 2rem);
+        min-height: calc(100vh - 2rem);
+        align-content: space-evenly;
+        justify-content: space-around;
+        padding: 1rem;
+      }
+      header,
+      footer {
+        text-align: center;
+        color: #fff;
+        user-select: none;
+      }
+
+      #header-hr {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(
+          to right,
+          rgb(218, 185, 0),
+          rgba(197, 246, 0, 0.75),
+          rgba(255, 166, 0, 0.683)
+        );
+      }
+      #footer-hr {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(
+          to right,
+          rgb(255, 166, 0),
+          rgba(197, 246, 0, 0.75),
+          rgba(218, 185, 0, 0.683)
+        );
+      }
+
+      #app {
+        max-width: 1280px;
+        padding: 2rem;
+        min-width: calc(100% - 5rem);
+      }
+    </style>
   </head>
   <body>
     <header>
       <h1>Social Post Formatter</h1>
       <hr id="header-hr" />
-      <p> A quick and simple way to add basic formatting to your posts on social media apps like LinkedIn, Bluesky, etc.</p>
+      <p>
+        A quick and simple way to add basic formatting to your posts on social
+        media apps like LinkedIn, Bluesky, etc.
+      </p>
     </header>
-    <main id="app"></main>
+    <main id="app">
+      <social-post-formatter />
+    </main>
     <footer>
       <hr id="footer-hr" />
-      <p> A Tool from <a href="https://codedparts.com">Parthipan</a></p>
+      <p>A Tool from <a href="https://codedparts.com">Parthipan</a></p>
     </footer>
     <script type="module" src="./src/main.ts"></script>
   </body>
