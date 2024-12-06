@@ -68,6 +68,9 @@
   }
 
   function handleSentimentAnalysis() {
+    if (AIActionInProgress) {
+      return;
+    }
     sentimentResponse = "";
     if (!editorContentRef.content) {
       toast = {
@@ -172,5 +175,10 @@
   }
   .ai-sentiment-btn:hover {
     background: #0b7dda;
+  }
+
+  .ai-sentiment-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
   }
 </style>
