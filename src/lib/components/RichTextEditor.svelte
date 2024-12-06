@@ -3,11 +3,17 @@
 <script lang="ts">
   import Toolbar from "./Toolbar.svelte";
   import EditorContent from "./EditorContent.svelte";
+  import ToastNotification from "./ToastNotification.svelte";
   import type { EditorCommand } from "../types/editor";
   import { executeFormatCommand } from "../utils/editor";
 
   let contentToFormat = "";
   let editorContentRef: EditorContent;
+
+  let toast = {
+    message: "",
+    type: "success",
+  };
 
   function handleCommand(event: CustomEvent<EditorCommand>) {
     if (contentToFormat.trim().length === 0) {
@@ -23,26 +29,40 @@
   function copyToClipboard() {
     const text = editorContentRef.content;
     if (!navigator.clipboard) {
-      console.error("Clipboard API not available");
+      toast = {
+        message: "Clipboard API not available on your browser",
+        type: "error",
+      };
       return;
     }
     if (!text) {
-      console.error("No text to copy");
+      toast = {
+        message: "The editor is empty",
+        type: "info",
+      };
       return;
     }
 
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        console.log("Text copied to clipboard");
+        toast = {
+          message: "Text copied to clipboard",
+          type: "success",
+        };
       })
       .catch((err) => {
-        console.error("Failed to copy text: ", err);
+        toast = {
+          message: "Failed to copy text",
+          type: "error",
+        };
+        console.error(err);
       });
   }
 </script>
 
 <div class="editor-container">
+  <ToastNotification bind:message={toast.message} bind:type={toast.type} />
   <Toolbar on:command={handleCommand} />
   <EditorContent
     bind:selectedContent={contentToFormat}
