@@ -1,5 +1,5 @@
 <script>
-  import SparkleIcon from "./SparkleIcon.svelte";
+  import SparkleIcon from "./icons/SparkleIcon.svelte";
 
   export let sentiment = "neutral";
 </script>

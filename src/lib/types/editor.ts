@@ -1,3 +1,5 @@
+import type { ComponentType } from 'svelte';
+
 export type EditorCommand =
   | "bold"
   | "italic"
@@ -8,7 +10,7 @@ export type MappableCommands = "bold" | "italic";
 export type listCommands = "insertunorderedlist" | "insertorderedlist";
 
 export type Tool = {
-  icon: string;
+  icon: ComponentType;
   command: EditorCommand;
   tooltip: string;
-}
+};

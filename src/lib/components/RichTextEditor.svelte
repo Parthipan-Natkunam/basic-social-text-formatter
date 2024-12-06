@@ -5,7 +5,7 @@
   import Toolbar from "./Toolbar.svelte";
   import EditorContent from "./EditorContent.svelte";
   import ToastNotification from "./ToastNotification.svelte";
-  import SparkleIcon from "./SparkleIcon.svelte";
+  import SparkleIcon from "./icons/SparkleIcon.svelte";
   import type { EditorCommand } from "../types/editor";
   import { executeFormatCommand } from "../utils/editor";
 

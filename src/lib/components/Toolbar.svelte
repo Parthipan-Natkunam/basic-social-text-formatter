@@ -4,10 +4,10 @@
   import ToolbarButton from "./ToolbarButton.svelte";
   import SentimentBadge from "./SentimentBadge.svelte";
 
-  import BoldIcon from "../img/bold.svg?url";
-  import ItalicIcon from "../img/italic.svg?url";
-  import ListIcon from "../img/list.svg?url";
-  import OrderedListIcon from "../img/olist.svg?url";
+  import BoldIcon from "./icons/BoldIcon.svelte";
+  import ItalicIcon from "./icons/ItalicIcon.svelte";
+  import ListIcon from "./icons/ListIcon.svelte";
+  import OrderedListIcon from "./icons/OrderedListIcon.svelte";
 
   export let detectedSentiment = "";
 

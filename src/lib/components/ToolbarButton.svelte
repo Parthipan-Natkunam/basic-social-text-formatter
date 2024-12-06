@@ -1,11 +1,7 @@
 <script lang="ts">
-  import type { EditorCommand } from '../types/editor';
+  import type { Tool} from '../types/editor';
 
-  export let tool: {
-    command: EditorCommand;
-    icon: string;
-    tooltip: string;
-  };
+  export let tool: Tool;
 </script>
 
 <button
@@ -13,7 +9,7 @@
   title={tool.tooltip}
   on:click
 >
-  <img src={tool.icon} alt={tool.tooltip}/>
+  <svelte:component this={tool.icon} />
 </button>
 
 <style>
