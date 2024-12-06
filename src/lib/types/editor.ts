@@ -1,4 +1,4 @@
-import type { ComponentType } from 'svelte';
+import type { ComponentType } from "svelte";
 
 export type EditorCommand =
   | "bold"
@@ -7,7 +7,7 @@ export type EditorCommand =
   | "insertOrderedList";
 
 export type MappableCommands = "bold" | "italic";
-export type listCommands = "insertunorderedlist" | "insertorderedlist";
+export type ListCommands = "insertunorderedlist" | "insertorderedlist";
 
 export type Tool = {
   icon: ComponentType;
