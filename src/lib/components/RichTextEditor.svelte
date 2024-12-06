@@ -1,11 +1,15 @@
-<svelte:options customElement="rich-text-editor" />
+<svelte:options customElement="social-post-formatter" />
 
 <script lang="ts">
+  import { onMount } from "svelte";
   import Toolbar from "./Toolbar.svelte";
   import EditorContent from "./EditorContent.svelte";
   import ToastNotification from "./ToastNotification.svelte";
+  import SparkleIcon from "./SparkleIcon.svelte";
   import type { EditorCommand } from "../types/editor";
   import { executeFormatCommand } from "../utils/editor";
+
+  import EdgeAI from "../utils/ai";
 
   let contentToFormat = "";
   let editorContentRef: EditorContent;
@@ -59,6 +63,18 @@
         console.error(err);
       });
   }
+
+  onMount(async () => {
+    try {
+      await EdgeAI.init();
+    } catch (error) {
+      toast = {
+        message: "AI features are not enabled on your browser",
+        type: "info",
+      };
+      console.error(error);
+    }
+  });
 </script>
 
 <div class="editor-container">
@@ -68,9 +84,14 @@
     bind:selectedContent={contentToFormat}
     bind:this={editorContentRef}
   />
-  <button class="editor-copy-btn" on:click={copyToClipboard}
-    >Copy to Clipboard</button
-  >
+  <div class="button-container">
+    <button class="ai-sentiment-btn">
+      <span> <SparkleIcon /> Detect Sentiment</span>
+    </button>
+    <button class="editor-copy-btn" on:click={copyToClipboard}
+      >Copy to Clipboard</button
+    >
+  </div>
 </div>
 
 <style>
@@ -83,7 +104,16 @@
     margin: 0 auto;
     position: relative;
   }
-  .editor-copy-btn {
+
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    right: -0.55rem;
+    bottom: -4rem;
+  }
+  .editor-copy-btn,
+  .ai-sentiment-btn {
     background: #4caf50;
     color: white;
     padding: 10px 20px;
@@ -92,11 +122,15 @@
     cursor: pointer;
     margin: 10px;
     font-weight: bold;
-    position: absolute;
-    right: -0.55rem;
-    bottom: -4rem;
   }
   .editor-copy-btn:hover {
     background: #45a049;
+  }
+
+  .ai-sentiment-btn {
+    background: #2196f3;
+  }
+  .ai-sentiment-btn:hover {
+    background: #0b7dda;
   }
 </style>

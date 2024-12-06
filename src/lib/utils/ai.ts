@@ -12,6 +12,9 @@ class EdgeAI {
   }
 
   async init() {
+    if (this.languageModel) {
+      return;
+    }
     if (!this.isEnabled()) {
       throw new Error("Edge AI feature is not enabled on this browser.");
     }

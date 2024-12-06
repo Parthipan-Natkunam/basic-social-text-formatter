@@ -5,7 +5,7 @@ const container = document.getElementById("app");
 
 if(container){
     container.innerHTML = `
-    <rich-text-editor/>
+    <social-post-formatter/>
     `;
 } else {
     console.error("Container not found");
