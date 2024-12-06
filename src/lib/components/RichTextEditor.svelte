@@ -14,6 +14,9 @@
   let contentToFormat = "";
   let editorContentRef: EditorContent;
 
+  let AIActionInProgress = false;
+  let sentimentResponse = "";
+
   let toast = {
     message: "",
     type: "success",
@@ -64,6 +67,33 @@
       });
   }
 
+  function handleSentimentAnalysis() {
+    sentimentResponse = "";
+    if (!editorContentRef.content) {
+      toast = {
+        message: "The editor is empty",
+        type: "info",
+      };
+      return;
+    }
+    AIActionInProgress = true;
+    EdgeAI.prompt(editorContentRef.content)
+      .then((sentiment) => {
+        sentimentResponse = sentiment;
+      })
+      .catch((error) => {
+        toast = {
+          message: "Failed to detect sentiment",
+          type: "error",
+        };
+        sentimentResponse = "";
+        console.error(error);
+      })
+      .finally(() => {
+        AIActionInProgress = false;
+      });
+  }
+
   onMount(async () => {
     try {
       await EdgeAI.init();
@@ -79,14 +109,24 @@
 
 <div class="editor-container">
   <ToastNotification bind:message={toast.message} bind:type={toast.type} />
-  <Toolbar on:command={handleCommand} />
+  <Toolbar
+    on:command={handleCommand}
+    bind:detectedSentiment={sentimentResponse}
+  />
   <EditorContent
     bind:selectedContent={contentToFormat}
     bind:this={editorContentRef}
   />
   <div class="button-container">
-    <button class="ai-sentiment-btn">
-      <span> <SparkleIcon /> Detect Sentiment</span>
+    <button
+      class="ai-sentiment-btn"
+      disabled={AIActionInProgress}
+      on:click={handleSentimentAnalysis}
+    >
+      <span>
+        <SparkleIcon />
+        {AIActionInProgress ? "Detecting Sentiment" : "Detect Sentiment"}</span
+      >
     </button>
     <button class="editor-copy-btn" on:click={copyToClipboard}
       >Copy to Clipboard</button
