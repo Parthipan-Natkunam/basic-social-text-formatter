@@ -8,6 +8,7 @@
   import SparkleIcon from "./icons/SparkleIcon.svelte";
   import type { EditorCommand } from "../types/editor";
   import { executeFormatCommand } from "../utils/editor";
+  import { isGoogleChrome } from "../utils/browser";
 
   import EdgeAI from "../utils/ai";
 
@@ -16,6 +17,7 @@
 
   let AIActionInProgress = false;
   let sentimentResponse = "";
+  let disableAIFeatures = false;
 
   let toast = {
     message: "",
@@ -98,9 +100,18 @@
   }
 
   onMount(async () => {
+    if (!isGoogleChrome()) {
+      disableAIFeatures = true;
+      toast = {
+        message: "The AI features are only available on Google Chrome",
+        type: "info",
+      };
+      return;
+    }
     try {
       await EdgeAI.init();
     } catch (error) {
+      disableAIFeatures = true;
       toast = {
         message: "AI features are not enabled on your browser",
         type: "info",
@@ -123,8 +134,9 @@
   <div class="button-container">
     <button
       class="ai-sentiment-btn"
-      disabled={AIActionInProgress}
+      disabled={AIActionInProgress || disableAIFeatures}
       on:click={handleSentimentAnalysis}
+      title={(AIActionInProgress || disableAIFeatures) ? "Sentiment Analysis is not available on your Browser" : null}
     >
       <span>
         <SparkleIcon />
