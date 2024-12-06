@@ -2,11 +2,14 @@
   import { createEventDispatcher } from "svelte";
   import type { EditorCommand, Tool } from "../types/editor";
   import ToolbarButton from "./ToolbarButton.svelte";
+  import SentimentBadge from "./SentimentBadge.svelte";
 
   import BoldIcon from "../img/bold.svg?url";
   import ItalicIcon from "../img/italic.svg?url";
   import ListIcon from "../img/list.svg?url";
   import OrderedListIcon from "../img/olist.svg?url";
+
+  export let detectedSentiment = "";
 
   const dispatch = createEventDispatcher<{ command: EditorCommand }>();
 
@@ -34,6 +37,7 @@
   {#each tools as tool}
     <ToolbarButton {tool} on:click={() => executeCommand(tool.command)} />
   {/each}
+  <SentimentBadge bind:sentiment={detectedSentiment} />
 </div>
 
 <style>
