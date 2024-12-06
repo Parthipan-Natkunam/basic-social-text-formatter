@@ -33,7 +33,7 @@
     background-color: rgba(255, 0, 0, 0.814);
     color: rgb(87, 0, 0);
   }
-  .neutral {
+  .neutral, .insufficient {
     background-color: rgba(173, 173, 173, 0.742);
     color: rgb(36, 36, 36);
   }

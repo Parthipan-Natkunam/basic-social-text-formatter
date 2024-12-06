@@ -29,6 +29,10 @@ class EdgeAI {
       throw new Error("AI model is not initialized.");
     }
     const response = await this.languageModel.prompt(prompt);
+    const acceptableResponses = ["positive", "negative", "neutral"];
+    if (!acceptableResponses.includes(response)) {
+      return "insufficient";
+    }
     return response;
   }
 }
