@@ -5,10 +5,10 @@
   import Toolbar from "./Toolbar.svelte";
   import EditorContent from "./EditorContent.svelte";
   import ToastNotification from "./ToastNotification.svelte";
-  import SparkleIcon from "./icons/SparkleIcon.svelte";
-  import type { EditorCommand } from "../types/editor";
+  import type { EditorCommand, ActionCommand } from "../types/editor";
   import { executeFormatCommand } from "../utils/editor";
   import { isGoogleChrome } from "../utils/browser";
+  import ActionButtons from "./ActionButtons.svelte";
 
   import EdgeAI from "../utils/ai";
 
@@ -99,6 +99,20 @@
       });
   }
 
+  function handleActionCommand(event: CustomEvent<ActionCommand>) {
+    const command = event.detail;
+    switch (command) {
+      case "copycontent":
+        copyToClipboard();
+        break;
+      case "analyzesentiment":
+        handleSentimentAnalysis();
+        break;
+      default:
+        break;
+    }
+  }
+
   onMount(async () => {
     if (!isGoogleChrome()) {
       disableAIFeatures = true;
@@ -131,22 +145,11 @@
     bind:selectedContent={contentToFormat}
     bind:this={editorContentRef}
   />
-  <div class="button-container">
-    <button
-      class="ai-sentiment-btn"
-      disabled={AIActionInProgress || disableAIFeatures}
-      on:click={handleSentimentAnalysis}
-      title={(AIActionInProgress || disableAIFeatures) ? "Sentiment Analysis is not available on your Browser" : null}
-    >
-      <span>
-        <SparkleIcon />
-        {AIActionInProgress ? "Detecting Sentiment" : "Detect Sentiment"}</span
-      >
-    </button>
-    <button class="editor-copy-btn" on:click={copyToClipboard}
-      >Copy to Clipboard</button
-    >
-  </div>
+  <ActionButtons
+    bind:AIActionInProgress
+    bind:disableAIFeatures
+    on:command={handleActionCommand}
+  />
 </div>
 
 <style>
@@ -158,39 +161,5 @@
     max-width: 600px;
     margin: 0 auto;
     position: relative;
-  }
-
-  .button-container {
-    display: flex;
-    justify-content: space-around;
-    position: absolute;
-    right: -0.55rem;
-    bottom: -4rem;
-  }
-  .editor-copy-btn,
-  .ai-sentiment-btn {
-    background: #4caf50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 10px;
-    font-weight: bold;
-  }
-  .editor-copy-btn:hover {
-    background: #45a049;
-  }
-
-  .ai-sentiment-btn {
-    background: #2196f3;
-  }
-  .ai-sentiment-btn:hover {
-    background: #0b7dda;
-  }
-
-  .ai-sentiment-btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
   }
 </style>

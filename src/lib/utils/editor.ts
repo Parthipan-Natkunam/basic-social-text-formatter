@@ -1,6 +1,6 @@
 import { unicodeMaps } from "./unicodeMaps";
 
-import type { MappableCommands, ListCommands } from "../types/editor";
+import type { MappableCommand, ListCommand } from "../types/editor";
 
 const insertUnorderedList = (text: string) => {
   const lines = text.split("\n");
@@ -20,11 +20,11 @@ const insertOrderedList = (text: string) => {
   return formattedLines.join("\n");
 };
 
-const isMappableCommand = (command: string): command is MappableCommands => {
+const isMappableCommand = (command: string): command is MappableCommand => {
   return command === "bold" || command === "italic";
 };
 
-const isListCommand = (command: string): command is ListCommands => {
+const isListCommand = (command: string): command is ListCommand => {
   return command === "insertunorderedlist" || command === "insertorderedlist";
 };
 

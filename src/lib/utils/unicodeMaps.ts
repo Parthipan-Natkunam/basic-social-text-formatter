@@ -1,6 +1,6 @@
-import type { MappableCommands } from "../types/editor";
+import type { MappableCommand } from "../types/editor";
 
-export const unicodeMaps: Record<MappableCommands, Record<string, string>> = {
+export const unicodeMaps: Record<MappableCommand, Record<string, string>> = {
   bold: {
     A: "𝐀",
     B: "𝐁",

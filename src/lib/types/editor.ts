@@ -6,8 +6,10 @@ export type EditorCommand =
   | "insertUnorderedList"
   | "insertOrderedList";
 
-export type MappableCommands = "bold" | "italic";
-export type ListCommands = "insertunorderedlist" | "insertorderedlist";
+export type MappableCommand = "bold" | "italic";
+export type ListCommand = "insertunorderedlist" | "insertorderedlist";
+
+export type ActionCommand = "copycontent" | "analyzesentiment";
 
 export type Tool = {
   icon: ComponentType;
