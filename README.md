@@ -30,10 +30,12 @@ This is a simple text formatter that makes your social media posts look pretty b
 
 ### Standalone Usage
 
-Since the build exports a native webcomponent, you can use it in any HTML file by importing the script and using the tag `<social-text-formatter></social-text-formatter>`
+Since the build exports a native webcomponent, you can use it in any HTML file by importing the script and using the tag `<social-text-formatter />`
 
 1. Build the project by running `npm run build`
-2. Copy the built js file to your project
+2. Copy the built `index` js file from the `assets` sub-directory in the generated `dist` directory to your project
+
+![Built file](docs/built_file.png)
 
 ```html
 <!DOCTYPE html>
