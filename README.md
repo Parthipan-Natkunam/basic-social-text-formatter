@@ -12,6 +12,7 @@ This is a simple text formatter that makes your social media posts look pretty b
 - [Steps to Run Locally](#steps-to-run-locally)
 - [Steps to Enable Gemini-nano On-device Model on Chrome](#steps-to-enable-gemini-nano-on-device-model-on-chrome)
 - [Standalone Usage](#standalone-usage)
+- [Architecture (HLD)](#architecture)
 
 ### Steps to Run Locally
 
@@ -48,3 +49,5 @@ Since the build exports a native webcomponent, you can use it in any HTML file b
   </body>
 </html>
 ```
+### Architecture
+![HLD](docs/hld.svg)
