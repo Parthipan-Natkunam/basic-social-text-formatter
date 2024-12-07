@@ -8,7 +8,7 @@ class EdgeAI {
   constructor() {}
 
   private isEnabled() {
-    return typeof window !== "undefined" && window.ai;
+    return typeof window !== "undefined" && window.ai?.languageModel;
   }
 
   async init() {
