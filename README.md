@@ -1,3 +1,5 @@
+[![Build & Deploy](https://github.com/Parthipan-Natkunam/basic-social-text-formatter/actions/workflows/deploy.yml/badge.svg)](https://github.com/Parthipan-Natkunam/basic-social-text-formatter/actions/workflows/deploy.yml)
+
 ## Social Text Formatter
 
 This is a simple text formatter that makes your social media posts look pretty by enabling bold and italics texts. It uses a `Unicode Substituion` technique to workaround the rendering limitations of such texts on social media platforms.
