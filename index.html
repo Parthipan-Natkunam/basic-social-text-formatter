@@ -17,6 +17,7 @@
         font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
         line-height: 1.5;
         font-weight: 400;
+        font-size: 16px;
 
         color-scheme: dark;
         color: rgb(0, 0, 0);
@@ -30,29 +31,33 @@
 
       body {
         margin: 0;
-        display: grid;
-        min-width: calc(100vw - 2rem);
-        min-height: calc(100vh - 2rem);
-        align-content: space-evenly;
-        justify-content: space-around;
         padding: 1rem;
       }
       header,
       footer {
-        text-align: center;
         color: #fff;
         user-select: none;
       }
+      header{
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 4rem 1rem;
+        font-size: 0.85rem;
+      }
+      header > h1 {
+        font-size: 0.95rem;
+        display: inline-block;
+      }
+      header > p {
+        margin: 0;
+      }
 
-      #header-hr {
-        border: 0;
-        height: 1px;
-        background-image: linear-gradient(
-          to right,
-          rgb(218, 185, 0),
-          rgba(197, 246, 0, 0.75),
-          rgba(255, 166, 0, 0.683)
-        );
+      footer{
+        text-align: center;
+        margin-top: 3rem;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
       }
       #footer-hr {
         border: 0;
@@ -74,10 +79,9 @@
   </head>
   <body>
     <header>
-      <h1><img src="./logo.svg" alt="application logo" width=50>Social Text Formatter</h1>
-      <hr id="header-hr" />
+      <h1><img src="./logo.svg" alt="application logo" width=30>Social Text Formatter</h1>
       <p>
-        Make your LinkedIn & BlueSky Posts Prettier, along with AI-powered sentiment analysis
+        Make your LinkedIn & BlueSky Posts Prettier
       </p>
     </header>
     <main id="app">
