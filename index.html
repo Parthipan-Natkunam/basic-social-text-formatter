@@ -29,9 +29,9 @@
         -moz-osx-font-smoothing: grayscale;
       }
 
-      body {
+      body, body > * {
         margin: 0;
-        padding: 1rem;
+        padding: 0;
       }
       header,
       footer {
@@ -41,8 +41,9 @@
       header{
         display: flex;
         flex-direction: column;
-        margin: 0 0 4rem 1rem;
+        margin: 0.5rem 0 4rem 1rem;
         font-size: 0.85rem;
+        min-width: 250px;
       }
       header > h1 {
         font-size: 0.95rem;
