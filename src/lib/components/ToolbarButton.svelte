@@ -14,7 +14,7 @@
 
 <style>
   .toolbar-button {
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.75rem;
     border: 1px solid #e2e8f0;
     background: white;
     border-radius: 4px;

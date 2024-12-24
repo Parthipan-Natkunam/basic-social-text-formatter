@@ -30,7 +30,6 @@
 
 <style>
   .editor-content {
-    height: 200px;
     padding: 1rem;
     width: calc(100% - 2px - 2rem);
     background: white;

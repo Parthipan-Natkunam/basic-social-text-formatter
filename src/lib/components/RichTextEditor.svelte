@@ -56,7 +56,7 @@
       .writeText(text)
       .then(() => {
         toast = {
-          message: "Text copied to clipboard",
+          message: "Text copied Successfully",
           type: "success",
         };
       })
@@ -154,12 +154,17 @@
 
 <style>
   .editor-container {
-    background: white;
+    background: rgba(255, 255, 255, 0.84);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 600px;
+    max-width: 1200px;
     margin: 0 auto;
+    display: grid;
     position: relative;
+    min-height: calc(100vh - 20rem);
+    min-width: 256px;
+    box-shadow: 0px 7px 7px 3px rgba(0, 0, 0, 0.2);
+    grid-template-rows: 70px 3fr 70px;
   }
 </style>

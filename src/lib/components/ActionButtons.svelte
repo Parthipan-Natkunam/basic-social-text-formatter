@@ -39,10 +39,7 @@
 <style>
   .button-container {
     display: flex;
-    justify-content: space-around;
-    position: absolute;
-    right: -0.55rem;
-    bottom: -4rem;
+    justify-content: flex-end;
   }
   .editor-copy-btn,
   .ai-sentiment-btn {

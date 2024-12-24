@@ -11,22 +11,30 @@
     <meta property="og:url" content="https://tools.codedparts.com" />
     <meta property="og:description"
       content="Make your LinkedIn & BlueSky Posts Prettier" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet">
 
     <style>
       :root {
-        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-        line-height: 1.5;
-        font-weight: 400;
+        font-family: "Source Code Pro", serif;
+        font-optical-sizing: auto;
         font-size: 16px;
 
         color-scheme: dark;
         color: rgb(0, 0, 0);
-        background-color: #242424;
+        background-color: #dedede;
 
         font-synthesis: none;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+      }
+
+      a {
+        color: #0077cc;
+        text-decoration: none;
       }
 
       body, body > * {
@@ -35,22 +43,25 @@
       }
       header,
       footer {
-        color: #fff;
+        color: #020101;
         user-select: none;
       }
       header{
-        display: flex;
-        flex-direction: column;
         margin: 0.5rem 0 4rem 1rem;
         font-size: 0.85rem;
         min-width: 250px;
       }
       header > h1 {
-        font-size: 0.95rem;
+        font-size: 1.25rem;
         display: inline-block;
       }
       header > p {
         margin: 0;
+        font-size: 0.95rem;
+        font-family: monospace;
+      }
+      header > h1 > img {
+        margin-right: 0.25rem;
       }
 
       footer{
@@ -65,9 +76,9 @@
         height: 1px;
         background-image: linear-gradient(
           to right,
-          rgb(255, 166, 0),
-          rgba(197, 246, 0, 0.75),
-          rgba(218, 185, 0, 0.683)
+          rgb(0, 0, 0),
+          rgba(58, 73, 0, 0.75),
+          rgba(94, 80, 0, 0.683)
         );
       }
 
@@ -80,7 +91,7 @@
   </head>
   <body>
     <header>
-      <h1><img src="./logo.svg" alt="application logo" width=30>Social Text Formatter</h1>
+      <h1><img src="./logo_inverse.svg" alt="application logo" width=30>Social Text Formatter</h1>
       <p>
         Make your LinkedIn & BlueSky Posts Prettier
       </p>
@@ -90,7 +101,7 @@
     </main>
     <footer>
       <hr id="footer-hr" />
-      <p>A Tool from <a href="https://codedparts.com">Parthipan</a></p>
+      <p>A Tool from <b><a href="https://codedparts.com">&lt;Coded Parts/&gt;</a></b></p>
     </footer>
     <script type="module" src="./src/main.ts"></script>
   </body>
