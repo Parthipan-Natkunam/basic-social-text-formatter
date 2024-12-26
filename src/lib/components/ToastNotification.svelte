@@ -33,6 +33,7 @@
         {/if}
       </span>
       <span class="message">{message}</span>
+      <div class="progress-bar"></div>
     </div>
   {/if}
 </div>
@@ -57,9 +58,29 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
+    position: relative;
   }
   .toast > .message {
     text-align: center;
+  }
+
+  .progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background-color: rgba(255, 240, 230, 0.7);
+    animation: progress 5s linear forwards;
+    width: 100%;
+  }
+
+  @keyframes progress {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 0;
+    }
   }
 
   .success {
