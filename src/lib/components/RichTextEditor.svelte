@@ -1,7 +1,7 @@
 <svelte:options customElement="social-post-formatter" />
 
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
   import Toolbar from "./Toolbar.svelte";
   import EditorContent from "./EditorContent.svelte";
   import ToastNotification from "./ToastNotification.svelte";
@@ -132,6 +132,10 @@
       };
       console.error(error);
     }
+  });
+
+  onDestroy(() => {
+    EdgeAI.disposeSession();
   });
 </script>
 

@@ -1,13 +1,10 @@
-export type AIModelInstance = {
+export type AISession = {
   prompt: (prompt: string) => Promise<string>;
+  destroy: () => void;
 };
 
 type AILanguageModel = {
-  create: ({
-    systemPrompt,
-  }: {
-    systemPrompt: string;
-  }) => Promise<AIModelInstance>;
+  create: ({ systemPrompt }: { systemPrompt: string }) => Promise<AISession>;
 };
 
 declare global {
