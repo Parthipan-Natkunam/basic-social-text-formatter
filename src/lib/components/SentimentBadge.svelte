@@ -18,7 +18,7 @@
     padding: 0.25em 0.8em;
     border-radius: 12px;
     font-weight: 400;
-    height: 1.25rem;
+    max-height: 1.25rem;
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -43,6 +43,7 @@
 <style>
   .toolbar {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     padding: 0.5rem;
     border-bottom: 1px solid #e2e8f0;
