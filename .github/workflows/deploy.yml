@@ -9,7 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Test
-        run: npm test
+        run: |
+          npm install
+          npm test
 
   build:
     runs-on: ubuntu-latest
