@@ -139,7 +139,7 @@
   });
 </script>
 
-<div class="editor-container">
+<div class="editor-container" data-testId="editor-container">
   <ToastNotification bind:message={toast.message} bind:type={toast.type} />
   <Toolbar
     on:command={handleCommand}

@@ -15,7 +15,11 @@
 
   const tools: Tool[] = [
     { command: "bold", icon: BoldIcon, tooltip: "Bold" },
-    { command: "italic", icon: ItalicIcon, tooltip: "Italic" },
+    {
+      command: "italic",
+      icon: ItalicIcon,
+      tooltip: "Italic",
+    },
     {
       command: "insertUnorderedList",
       icon: ListIcon,
