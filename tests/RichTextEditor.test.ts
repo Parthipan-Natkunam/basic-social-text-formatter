@@ -1,4 +1,4 @@
-import { describe, test, expect, vi, afterEach, beforeEach } from "vitest";
+import { describe, test, expect, vi } from "vitest";
 import { render, fireEvent } from "@testing-library/svelte";
 
 import RichTextEditor from "../src/lib/components/RichTextEditor.svelte";
