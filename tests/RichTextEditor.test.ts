@@ -84,6 +84,23 @@ describe("RichTextEditor", () => {
     expect(editor).toHaveValue("• item 1\n• item2\nsome other stuff");
   });
 
+  test("Skips empty lines when adding bullet points", () => {
+    const { getByRole, getByTitle } = render(RichTextEditor);
+    const editor = getByRole("textbox") as HTMLTextAreaElement;
+    const bulletListButton = getByTitle("Bullet List");
+
+    fireEvent.input(editor, {
+      target: { value: "item 1\n\nitem2\nsome other stuff" },
+    });
+    fireEvent.select(editor, {
+      target: { selectionStart: 0, selectionEnd: 13 },
+    });
+
+    fireEvent.click(bulletListButton);
+
+    expect(editor).toHaveValue("• item 1\n\n• item2\nsome other stuff");
+  });
+
   test("Adds a numbered list to each selected new line on button click", () => {
     const { getByRole, getByTitle } = render(RichTextEditor);
     const editor = getByRole("textbox") as HTMLTextAreaElement;
@@ -99,5 +116,22 @@ describe("RichTextEditor", () => {
     fireEvent.click(numberedListButton);
 
     expect(editor).toHaveValue("1. item 1\n2. item2\nsome other stuff");
+  });
+
+  test("Skips empty lines when adding numbered points", () => {
+    const { getByRole, getByTitle } = render(RichTextEditor);
+    const editor = getByRole("textbox") as HTMLTextAreaElement;
+    const numberedListButton = getByTitle("Numbered List");
+
+    fireEvent.input(editor, {
+      target: { value: "item 1\n\nitem2\nsome other stuff" },
+    });
+    fireEvent.select(editor, {
+      target: { selectionStart: 0, selectionEnd: 13 },
+    });
+
+    fireEvent.click(numberedListButton);
+
+    expect(editor).toHaveValue("1. item 1\n\n2. item2\nsome other stuff");
   });
 });

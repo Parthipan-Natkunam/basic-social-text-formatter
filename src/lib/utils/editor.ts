@@ -5,7 +5,7 @@ import type { MappableCommand, ListCommand } from "../types/editor";
 const insertUnorderedList = (text: string) => {
   const lines = text.split("\n");
   const formattedLines = lines.map((line) => {
-    return `• ${line}`;
+    return  line.trim() ? `• ${line}` : line;
   });
 
   return formattedLines.join("\n");
@@ -13,8 +13,10 @@ const insertUnorderedList = (text: string) => {
 
 const insertOrderedList = (text: string) => {
   const lines = text.split("\n");
+  let listNumber = 0;
   const formattedLines = lines.map((line, index) => {
-    return `${index + 1}. ${line}`;
+    listNumber = line.trim() ? listNumber + 1 : listNumber;
+    return line.trim() ? `${listNumber}. ${line}` : line;
   });
 
   return formattedLines.join("\n");
