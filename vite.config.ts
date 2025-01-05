@@ -13,4 +13,9 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./setupTest.ts"],
   },
+  server: {
+    watch: {
+      usePolling: true, // Required for WSL2 HMR
+    },
+  },
 });
