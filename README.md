@@ -1,5 +1,5 @@
 [![Build & Deploy](https://github.com/Parthipan-Natkunam/basic-social-text-formatter/actions/workflows/deploy.yml/badge.svg)](https://github.com/Parthipan-Natkunam/basic-social-text-formatter/actions/workflows/deploy.yml)
-[![Deployment - tools.codedparts.com](https://img.shields.io/static/v1?label=Deployment&message=tools.codedparts.com&color=0087bd)](https://tools.codedparts.com/)
+[![Deployment - tools.codedparts.com](https://img.shields.io/static/v1?label=Deployment&message=tools.codedparts.com&color=0087bd)](https://tools.codedparts.com/social-text-formatter/)
 
 ## Social Text Formatter
 
